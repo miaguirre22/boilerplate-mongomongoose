@@ -5,29 +5,22 @@ const mySecret = process.env['MONGO_URI']
 
 mongoose.connect(mySecret, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// console.log("mySecret: ", mySecret)
-
 const { Schema } = mongoose;
 
-// const Schema = mongoose.Schema;
-
 const personSchema = new Schema({
-  name:  {type: String, required: true}, // String is shorthand for {type: String}
+  name:  {type: String, required: true}, 
   age: Number,
   favoriteFoods: [String]  
 });
 
-// let Person 
 let Person = mongoose.model('Person', personSchema);
 
-// console.log("persona model:", Persona)
-
-// let data = new Person({"name": "martin"})
-
-// console.log("Person model: ", data)
-
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let person = new Person({"name": "martin", "age": 36, "favoriteFoods": ["pastas", "pizzas"]})
+  person.save(function(err, data) {
+    if (err) console.error(err)
+    done(null, data);
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
