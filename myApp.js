@@ -7,18 +7,18 @@ mongoose.connect(mySecret, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // console.log("mySecret: ", mySecret)
 
-// const { Schema } = mongoose;
+const { Schema } = mongoose;
 
 // const Schema = mongoose.Schema;
 
-// const personSchema = new Schema({
-//   name:  {type: String, required: true}, // String is shorthand for {type: String}
-//   age: Number,
-//   favoriteFoods: [String]  
-// });
+const personSchema = new Schema({
+  name:  {type: String, required: true}, // String is shorthand for {type: String}
+  age: Number,
+  favoriteFoods: [String]  
+});
 
-let Person 
-// let Person = mongoose.model('Person', personSchema);
+// let Person 
+let Person = mongoose.model('Person', personSchema);
 
 // console.log("persona model:", Persona)
 
